@@ -1,0 +1,19 @@
+services:
+  - type: worker
+    name: noor-telegram-bot
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    autoDeploy: true
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: NOOR_MODEL
+        value: gpt-4.1-mini
+      - key: NOOR_ALLOWED_USER_IDS
+        sync: false
+      - key: LOG_LEVEL
+        value: INFO
